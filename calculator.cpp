@@ -175,6 +175,7 @@ void help() {
 int main() {
 	help();
 	while(true) {
+		bool unknownCommand = true;
 		string commandType;
 		cout << ">>> ";
 		cin >> commandType;
@@ -182,41 +183,51 @@ int main() {
 			string num;
 			cin >> num;
 			cout << binary2dec(num) << endl;
+			unknownCommand = false;
 		}
 		if(commandType == "b2h") {
 			string num;
 			cin >> num;
 			cout << binary2hex(num) << endl;
+			unknownCommand = false;
 		}
 		if(commandType == "h2d") {
 			string num;
 			cin >> num;
 			cout << hex2dec(num) << endl;
+			unknownCommand = false;
 		}
 		if(commandType == "h2b") {
 			string num;
 			cin >> num;
 			cout << hex2binary(num) << endl;
+			unknownCommand = false;
 		}
 		if(commandType == "d2b") {
 			long long num;
 			cin >> num;
 			cout << dec2binary(num) << endl;
+			unknownCommand = false;
 		}
 		if(commandType == "d2h") {
 			long long num;
 			cin >> num;
 			cout << dec2hex(num) << endl;
+			unknownCommand = false;
 		}
 		if(commandType == "help") {
 			help();
+			unknownCommand = false;
 		}
 		if(commandType == "exit") {
 			exit(0);
 		}
-		else {
+		
+		if(unknownCommand){
 			cout << "Unknown command... Try typing help to see the available commands to you." << endl;
 		}
+
+
 		cout << endl;
 	}
 }
